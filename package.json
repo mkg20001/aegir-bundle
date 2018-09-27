@@ -1,7 +1,7 @@
 {
   "name": "aegir-bundle",
   "version": "0.0.1",
-  "description": "aegir pkg as single-file bundle",
+  "description": "aegir dev-cli packaged as tiny, minified, single-file bundle",
   "main": "index.js",
   "bin": {
     "aegir": "./src/bin/aegir.js",
