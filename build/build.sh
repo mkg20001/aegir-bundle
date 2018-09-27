@@ -3,6 +3,7 @@
 set -e
 
 # create tmp
+
 TMP="$PWD/aegir"
 rm -rf "$TMP"
 mkdir "$TMP"
