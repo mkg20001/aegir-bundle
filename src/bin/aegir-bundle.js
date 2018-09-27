@@ -2,7 +2,7 @@
 
 'use strict'
 
-const download = require('./')
+const download = require('../')
 
 const error = (err) => {
   process.stdout.write(`${err}\n`)

@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "aegir pkg as single-file bundle",
   "main": "index.js",
+  "bin": {
+    "aegir": "./src/bin/aegir.js",
+    "aegir-bundle": "./src/bin/aegir-bundle.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +17,7 @@
   ],
   "author": "Maciej Krüger <mkg20001@gmail.com>",
   "license": "MIT",
+  "aegir": "15.2.0",
   "dependencies": {
     "gunzip-maybe": "^1.4.1",
     "request": "^2.88.0",

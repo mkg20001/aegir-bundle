@@ -31,8 +31,7 @@ function download (...args) {
     const {version, platform, installPath} = generateParameters(...args)
 
     // Create the download url
-    const fileExtension = '.tar.gz'
-    const fileName = platform + '-' + fileExtension
+    const fileName = platform + '.tar.gz'
     const url = 'https://aegir.mkg20001.io/' + version + '/' + fileName
 
     // Success callback wrapper
