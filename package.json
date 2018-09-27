@@ -1,0 +1,21 @@
+{
+  "name": "aegir-bundle",
+  "version": "0.0.1",
+  "description": "aegir pkg as single-file bundle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aegir",
+    "bundle",
+    "cli"
+  ],
+  "author": "Maciej Krüger <mkg20001@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gunzip-maybe": "^1.4.1",
+    "request": "^2.88.0",
+    "tar-fs": "^1.16.3"
+  }
+}
