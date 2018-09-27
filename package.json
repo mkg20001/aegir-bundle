@@ -22,5 +22,14 @@
     "gunzip-maybe": "^1.4.1",
     "nugget": "github:mkg20001/nugget",
     "tar-fs": "^1.16.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkg20001/aegir-bundle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mkg20001/aegir-bundle/issues"
+  },
+  "homepage": "https://github.com/mkg20001/aegir-bundle#readme"
 }
