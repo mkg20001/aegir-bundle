@@ -35,9 +35,14 @@ function download (...args) {
     // Create the download url
     const fileName = platform + '.tar.gz'
     const url = 'https://aegir.mkg20001.io/' + version + '/' + fileName
+    let dl
 
     // Success callback wrapper
     const done = () => {
+      if (dl && dl.progress.percentage !== 100) {
+        return reject(new Error('Download interrupted'))
+      }
+
       fs.writeFileSync(binPath + '.ok', '')
       resolve({
         fileName,
@@ -64,7 +69,7 @@ function download (...args) {
     // Start
     process.stdout.write(`Downloading ${url}\n`)
 
-    nugget(url, {target: fileName, streamOnly: true}, (err, stream) => {
+    dl = nugget(url, {target: fileName, streamOnly: true}, (err, stream) => {
       if (err) {
         return reject(err[0])
       }
