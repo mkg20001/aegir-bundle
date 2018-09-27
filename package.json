@@ -20,7 +20,7 @@
   "aegir": "15.2.0",
   "dependencies": {
     "gunzip-maybe": "^1.4.1",
-    "request": "^2.88.0",
+    "nugget": "github:mkg20001/nugget",
     "tar-fs": "^1.16.3"
   }
 }

@@ -12,7 +12,7 @@ const error = (err) => {
 
 const success = (output) => {
   process.stdout.write(`Downloaded ${output.fileName}\n`)
-  process.stdout.write(`Installed ${process.argv[2]} to ${output.installPath}\n`)
+  process.stdout.write(`Installed aegir to ${output.installPath}\n`)
   process.exit(0)
 }
 

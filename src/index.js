@@ -19,8 +19,10 @@
       .catch((e) => console.error(e))
 */
 
+const nugget = require('nugget')
+const fs = require('fs')
+
 const gunzip = require('gunzip-maybe')
-const request = require('request')
 const tarFS = require('tar-fs')
 
 const {generateParameters} = require('./common')
@@ -28,17 +30,24 @@ const {generateParameters} = require('./common')
 // Main function
 function download (...args) {
   return new Promise((resolve, reject) => {
-    const {version, platform, installPath} = generateParameters(...args)
+    const {version, platform, installPath, binPath} = generateParameters(...args)
 
     // Create the download url
     const fileName = platform + '.tar.gz'
     const url = 'https://aegir.mkg20001.io/' + version + '/' + fileName
 
     // Success callback wrapper
-    const done = () => resolve({
-      fileName,
-      installPath
-    })
+    const done = () => {
+      fs.writeFileSync(binPath + '.ok', '')
+      resolve({
+        fileName,
+        installPath
+      })
+    }
+
+    if (fs.existsSync(binPath + '.ok')) {
+      return done()
+    }
 
     // Unpack the response stream
     const unpack = (stream) => {
@@ -55,24 +64,13 @@ function download (...args) {
     // Start
     process.stdout.write(`Downloading ${url}\n`)
 
-    request.get(url, (err, res, body) => {
+    nugget(url, {target: fileName, streamOnly: true}, (err, stream) => {
       if (err) {
-        // TODO handle error
-        return reject(err)
+        return reject(err[0])
       }
-      // Handle errors
-      if (res.statusCode !== 200) {
-        reject(new Error(`${res.statusCode} - ${res.body}`))
-      }
-    })
-      .on('response', (res) => {
-      // Unpack only if the request was successful
-        if (res.statusCode !== 200) {
-          return
-        }
 
-        unpack(res)
-      })
+      unpack(stream)
+    })
   })
 }
 

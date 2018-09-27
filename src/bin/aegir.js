@@ -3,8 +3,6 @@
 'use strict'
 
 const download = require('../')
-const fs = require('fs')
-
 const {generateParameters} = require('../common')
 const {binPath} = generateParameters()
 
@@ -18,10 +16,6 @@ const error = (err) => {
   process.exit(1)
 }
 
-if (!fs.existsSync(binPath)) {
-  download()
-    .then(launch)
-    .catch(error)
-} else {
-  launch()
-}
+download()
+  .then(launch)
+  .catch(error)
