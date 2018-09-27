@@ -3,15 +3,12 @@
 set -e
 
 # create tmp
-
 TMP="$PWD/aegir"
 rm -rf "$TMP"
-mkdir "$TMP"
-pushd "$TMP"
 
 # clone aegir
-git clone https://github.com/ipfs/aegir
-pushd aegir
+git clone https://github.com/ipfs/aegir "$TMP"
+pushd "$TMP"
 
 # apply patch
 curl https://patch-diff.githubusercontent.com/raw/ipfs/aegir/pull/262.patch | git apply -
